@@ -1,0 +1,74 @@
+<h1 class="page-header">
+    Agenda</h1>
+
+<div id="grid"></div>
+
+<script>
+    $(document).ready(function () {
+        var agrid = $("#grid").anexGrid({
+            class: 'table-striped table-bordered',
+            columnas: [{
+                    leyenda: 'Name',
+                    columna: 'name',
+                    ordenable: true
+                },
+                {
+                    leyenda: 'Lastname',
+                    columna: 'last_name',
+                    ordenable: true
+                },
+                {
+                    leyenda: 'Address',
+                    columna: 'address',
+                    ordenable: true
+                },
+                {
+                    leyenda: 'Telephone',
+                    columna: 'telephone',
+                    style: 'width:120px;',
+                    ordenable: true
+                },
+                {
+                    leyenda: 'Cellphone',
+                    columna: 'cellphone',
+                    style: 'width:120px;',
+                    ordenable: true
+                },
+                {
+                    leyenda: 'Avatar',
+                    columna: 'avatar',
+                    style: 'width:80px;',
+                    ordenable: true
+                }
+            ],
+            modelo: [{
+                    propiedad: 'name'
+                },
+                {
+                    propiedad: 'last_name'
+                },
+                {
+                    propiedad: 'address'
+                },
+                {
+                    propiedad: 'telephone'
+                },
+                {
+                    propiedad: 'cellphone'
+                },
+                {
+                    propiedad: 'avatar',
+                    class: 'text-center',
+                    formato: function (tr, obj, celda) {
+                        return '<img style="width:32px;" src="{0}" />'.replace('{0}', celda);
+                    }
+                },
+            ],
+            url: '?controller=User&action=getAll',
+            paginable: true,
+            limite: [10,20,30],
+            columna: 'id',
+            columna_orden: 'DESC'
+        })
+    })
+</script>
